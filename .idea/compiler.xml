@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="p&amp;f" />
+        <module name="pipesandfilters" />
         <module name="hexagonal" />
         <module name="microkernel" />
       </profile>
@@ -15,7 +15,7 @@
       <module name="app-arch-ref-project" target="1.5" />
       <module name="hexagonal" target="11" />
       <module name="microkernel" target="11" />
-      <module name="p&amp;f" target="11" />
+      <module name="pipesandfilters" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
