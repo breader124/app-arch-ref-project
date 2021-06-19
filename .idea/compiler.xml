@@ -7,15 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pipesandfilters" />
-        <module name="hexagonal" />
         <module name="microkernel" />
+        <module name="hexagonal" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="app-arch-ref-project" target="1.5" />
+      <module name="app-arch-ref-project" target="1.8" />
       <module name="hexagonal" target="11" />
       <module name="microkernel" target="11" />
       <module name="pipesandfilters" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hexagonal" options="-parameters" />
+      <module name="microkernel" options="-parameters" />
+      <module name="pipesandfilters" options="-parameters" />
+    </option>
   </component>
 </project>
