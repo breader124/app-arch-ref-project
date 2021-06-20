@@ -13,12 +13,12 @@ class Transfer(val from: String, val to: String, val date: LocalDate, val amount
 
     init {
         if (!date.isBankingDay() || !doesAmountExceedBankLimit()) {
-            throw TransferCreationException()
+            throw TransferCreationException("Not a banking date or bank limit exceeded")
         }
     }
 
     private fun doesAmountExceedBankLimit(): Boolean {
-        val limit = Money.of(BigDecimal.valueOf(5000000), Monetary.getCurrency("USD"))
+        val limit = Money.of(BigDecimal.valueOf(5000000), Monetary.getCurrency("PLN"))
         return amount.isGreaterThan(limit)
     }
 

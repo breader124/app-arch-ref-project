@@ -1,8 +1,10 @@
 package com.breader.hexagonal.usecase.port
 
 import com.breader.hexagonal.domain.Transfer
+import com.breader.hexagonal.domain.TransferId
 
 interface TransferRepo {
-    fun save(t: Transfer): Boolean
-    fun delete(t: Transfer): Boolean
+    fun findById(transferId: TransferId): Transfer?
+    fun save(t: Transfer)
+    fun delete(t: Transfer)
 }

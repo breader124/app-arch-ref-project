@@ -8,15 +8,13 @@ class InMemoryUserRepo : UserRepo {
 
     private val db: MutableList<User> = mutableListOf()
 
-    override fun findById(userId: UserId): User {
-        TODO("Not yet implemented")
-    }
+    override fun findById(userId: UserId): User? = db.find { it.id == userId }
 
-    override fun findByAccountNumber(accountNumber: String): User {
-        TODO("Not yet implemented")
+    override fun findByAccountNumber(accountNumber: String): User? = db.find { user ->
+        user.accountList.map { it.accountNumber }.contains(accountNumber)
     }
 
     override fun save(user: User) {
-        TODO("Not yet implemented")
+        db.add(user)
     }
 }

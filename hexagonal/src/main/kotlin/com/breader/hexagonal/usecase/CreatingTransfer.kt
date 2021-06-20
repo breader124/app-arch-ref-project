@@ -9,6 +9,7 @@ import com.breader.hexagonal.usecase.port.UserRepo
 import org.javamoney.moneta.Money
 import org.springframework.lang.NonNull
 import java.math.BigDecimal
+import java.time.Instant
 import java.time.LocalDate
 import javax.money.Monetary
 
@@ -19,19 +20,20 @@ class CreatingTransfer(
 ) {
 
     fun createTransfer(request: CreateTransferRequest) {
-        val debtor = userRepo.findByAccountNumber(request.from) ?: throw TransferCreationException()
+        val debtor = userRepo.findByAccountNumber(request.from) ?: throw TransferCreationException("No such debtor account")
         val doesCreditorAccountExists = transferApi.isAccountNumberCorrect(request.to)
         if (!doesCreditorAccountExists) {
-            throw TransferCreationException()
+            throw TransferCreationException("No such creditor account")
         }
 
         val amount = Money.of(request.amount, Monetary.getCurrency(request.currency))
-        val newTransfer = Transfer(request.from, request.to, request.date, amount)
+        val date = LocalDate.from(request.timestamp)
+        val newTransfer = Transfer(request.from, request.to, date, amount)
         transferRepo.save(newTransfer)
 
-        val type = debtor.registerTransfer(request.from, request.to, request.date, amount)
+        val type = debtor.registerTransfer(request.from, request.to, date, amount)
         if (type == TransferType.EXTERNAL) {
-            transferApi.notifyExternalBankAboutTransfer(request.to, request.date, amount)
+            transferApi.notifyExternalBankAboutTransfer(request.to, date, amount)
         }
         userRepo.save(debtor)
     }
@@ -41,7 +43,7 @@ class CreatingTransfer(
 data class CreateTransferRequest(
     @NonNull val from: String,
     @NonNull val to: String,
-    @NonNull val date: LocalDate,
+    @NonNull val timestamp: Instant,
     @NonNull val amount: BigDecimal,
     @NonNull val currency: String
 )
