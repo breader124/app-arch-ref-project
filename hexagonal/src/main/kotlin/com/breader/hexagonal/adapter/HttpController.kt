@@ -11,7 +11,7 @@ class HttpController(private val creatingTransfer: CreatingTransfer) {
 
     @PostMapping
     fun createTransfer(@RequestBody request: CreateTransferRequest) {
-        TODO("Not yet implemented")
+        creatingTransfer.createTransfer(request)
     }
 
 }
