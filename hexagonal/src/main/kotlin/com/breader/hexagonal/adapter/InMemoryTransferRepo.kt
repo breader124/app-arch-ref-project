@@ -16,21 +16,11 @@ class InMemoryTransferRepo : TransferRepo {
     override fun save(t: Transfer): Boolean {
         val result = db.add(t)
         if (result) {
-            logger.log(Level.INFO, "Transfer with ID = ${t.transferId} saved in db")
+            logger.log(Level.INFO, "Transfer with ID = ${t.id} saved in db")
         } else {
-            logger.log(Level.INFO, "Problem occured trying to save transfer with ID = ${t.transferId}")
+            logger.log(Level.INFO, "Problem occured trying to save transfer with ID = ${t.id}")
         }
         return result
-    }
-
-    override fun modify(t: Transfer): Boolean {
-        val transferIndex = db.indexOf(t)
-        return if (transferIndex != -1) {
-            db[transferIndex] = t
-            true
-        } else {
-            false
-        }
     }
 
     override fun delete(t: Transfer): Boolean {
