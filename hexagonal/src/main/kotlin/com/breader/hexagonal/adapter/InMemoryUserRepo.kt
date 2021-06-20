@@ -6,6 +6,8 @@ import com.breader.hexagonal.usecase.port.UserRepo
 
 class InMemoryUserRepo : UserRepo {
 
+    private val db: MutableList<User> = mutableListOf()
+
     override fun findById(userId: UserId): User {
         TODO("Not yet implemented")
     }
@@ -14,4 +16,7 @@ class InMemoryUserRepo : UserRepo {
         TODO("Not yet implemented")
     }
 
+    override fun save(user: User) {
+        TODO("Not yet implemented")
+    }
 }

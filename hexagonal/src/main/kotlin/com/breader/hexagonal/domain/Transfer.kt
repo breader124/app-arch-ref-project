@@ -1,25 +1,20 @@
 package com.breader.hexagonal.domain
 
+import com.breader.hexagonal.isBankingDay
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
-import java.time.DayOfWeek
-import java.time.LocalDateTime
+import java.time.LocalDate
 import javax.money.Monetary
 import javax.money.MonetaryAmount
 
-class Transfer(val from: String, val to: String, val date: LocalDateTime, val amount: MonetaryAmount) {
+class Transfer(val from: String, val to: String, val date: LocalDate, val amount: MonetaryAmount) {
 
     val id = TransferId()
 
     init {
-        if (!isDateBankingDay() || !doesAmountExceedBankLimit()) {
+        if (!date.isBankingDay() || !doesAmountExceedBankLimit()) {
             throw TransferCreationException()
         }
-    }
-
-    private fun isDateBankingDay(): Boolean {
-        val dayOfWeek = date.dayOfWeek
-        return !(dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) // simplified as hell!
     }
 
     private fun doesAmountExceedBankLimit(): Boolean {

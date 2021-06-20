@@ -6,4 +6,5 @@ import com.breader.hexagonal.domain.UserId
 interface UserRepo {
     fun findById(userId: UserId): User?
     fun findByAccountNumber(accountNumber: String): User?
+    fun save(user: User)
 }

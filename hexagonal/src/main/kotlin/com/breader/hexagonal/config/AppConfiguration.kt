@@ -2,9 +2,9 @@ package com.breader.hexagonal.config
 
 import com.breader.hexagonal.adapter.InMemoryTransferRepo
 import com.breader.hexagonal.adapter.InMemoryUserRepo
-import com.breader.hexagonal.adapter.MockedAccountValidator
+import com.breader.hexagonal.adapter.MockedTransferApi
 import com.breader.hexagonal.usecase.CreatingTransfer
-import com.breader.hexagonal.usecase.port.AccountValidator
+import com.breader.hexagonal.usecase.port.TransferApi
 import com.breader.hexagonal.usecase.port.TransferRepo
 import com.breader.hexagonal.usecase.port.UserRepo
 import org.springframework.context.annotation.Bean
@@ -20,7 +20,7 @@ class AppConfiguration {
     fun userRepo(): UserRepo = InMemoryUserRepo()
 
     @Bean
-    fun accountValidator(): AccountValidator = MockedAccountValidator()
+    fun accountValidator(): TransferApi = MockedTransferApi()
 
     @Bean
     fun creatingTransfer(): CreatingTransfer = CreatingTransfer(userRepo(), transferRepo(), accountValidator())
