@@ -1,11 +1,16 @@
 package com.breader.hexagonal.usecase
 
+import com.breader.hexagonal.usecase.port.AccountValidator
 import com.breader.hexagonal.usecase.port.TransferRepo
 import com.breader.hexagonal.usecase.port.UserRepo
 import org.springframework.lang.NonNull
 import java.math.BigInteger
 
-class CreatingTransfer(private val userRepo: UserRepo, private val transferRepo: TransferRepo) {
+class CreatingTransfer(
+    private val userRepo: UserRepo,
+    private val transferRepo: TransferRepo,
+    private val accountValidator: AccountValidator
+) {
 
     fun createTransfer(request: CreateTransferRequest) {
         TODO("Not yet implemented")
