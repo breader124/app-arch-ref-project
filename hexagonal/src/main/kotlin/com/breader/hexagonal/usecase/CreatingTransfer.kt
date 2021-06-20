@@ -13,6 +13,8 @@ import java.time.Instant
 import java.time.LocalDate
 import javax.money.Monetary
 
+// Creating transfer use case implementation, please note, that this class mostly checks existence and integrates
+// business logic results with repositories, all the magic happens in classes belonging to pure domain
 class CreatingTransfer(
     private val userRepo: UserRepo,
     private val transferRepo: TransferRepo,
@@ -26,12 +28,12 @@ class CreatingTransfer(
             throw TransferCreationException("No such creditor account")
         }
 
-        val amount = Money.of(request.amount, Monetary.getCurrency(request.currency))
         val date = LocalDate.from(request.timestamp)
-        val newTransfer = Transfer(request.from, request.to, date, amount)
+        val amount = Money.of(request.amount, request.currency)
+        val newTransfer = Transfer(request.from, request.to, amount, date)
         transferRepo.save(newTransfer)
 
-        val type = debtor.registerTransfer(request.from, request.to, date, amount)
+        val type = debtor.registerTransfer(newTransfer)
         if (type == TransferType.EXTERNAL) {
             transferApi.notifyExternalBankAboutTransfer(request.to, date, amount)
         }

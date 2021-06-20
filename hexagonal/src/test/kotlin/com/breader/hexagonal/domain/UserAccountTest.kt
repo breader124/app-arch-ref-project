@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import javax.money.Monetary
 
-internal class UserTest {
+internal class UserAccountTest {
 
-    private val userId: UserId = UserId()
+    private val userAccountId: UserAccountId = UserAccountId()
 
     private val PLN = Monetary.getCurrency("PLN")
     private val accountList = listOf(
-        Account("PL10 1050 0099 7603 1234 5678 9123", PLN, Money.of(1234, "PLN"), Money.of(0, "PLN")),
-        Account("PL10 0700 9312 3456 7867 8900 9976", PLN, Money.of(1234, "PLN"), Money.of(0, "PLN"))
+        BankAccount("PL10 1050 0099 7603 1234 5678 9123", PLN, Money.of(1234, "PLN"), Money.of(0, "PLN")),
+        BankAccount("PL10 0700 9312 3456 7867 8900 9976", PLN, Money.of(1234, "PLN"), Money.of(0, "PLN"))
     )
 
-    private val user = User(userId, accountList)
+    private val user = UserAccount(userAccountId, accountList)
 
     private val nonBankingDate = LocalDate.of(2021, 6, 20)
     private val bankingDate = LocalDate.of(2021, 6, 21)

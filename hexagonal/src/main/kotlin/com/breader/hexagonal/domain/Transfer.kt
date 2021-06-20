@@ -7,9 +7,9 @@ import java.time.LocalDate
 import javax.money.Monetary
 import javax.money.MonetaryAmount
 
-class Transfer(val from: String, val to: String, val date: LocalDate, val amount: MonetaryAmount) {
+class Transfer(val from: String, val to: String, val amount: MonetaryAmount, val date: LocalDate) {
 
-    val id = TransferId()
+    val id: TransferId = TransferId()
 
     init {
         if (!date.isBankingDay() || !doesAmountExceedBankLimit()) {

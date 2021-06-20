@@ -2,6 +2,6 @@ package com.breader.hexagonal.domain
 
 import java.util.*
 
-class UserId {
+class UserAccountId {
     private val id = UUID.randomUUID()
 }

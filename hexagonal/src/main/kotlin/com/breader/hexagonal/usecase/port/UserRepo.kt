@@ -1,10 +1,10 @@
 package com.breader.hexagonal.usecase.port
 
-import com.breader.hexagonal.domain.User
-import com.breader.hexagonal.domain.UserId
+import com.breader.hexagonal.domain.UserAccount
+import com.breader.hexagonal.domain.UserAccountId
 
 interface UserRepo {
-    fun findById(userId: UserId): User?
-    fun findByAccountNumber(accountNumber: String): User?
-    fun save(user: User)
+    fun findById(userAccountId: UserAccountId): UserAccount?
+    fun findByAccountNumber(accountNumber: String): UserAccount?
+    fun save(userAccount: UserAccount)
 }
