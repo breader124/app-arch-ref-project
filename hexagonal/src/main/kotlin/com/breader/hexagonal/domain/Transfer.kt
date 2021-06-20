@@ -1,4 +1,3 @@
 package com.breader.hexagonal.domain
 
-class Transfer {
-}
+class Transfer(val transferId: TransferId)

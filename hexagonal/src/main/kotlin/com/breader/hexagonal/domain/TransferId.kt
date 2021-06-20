@@ -1,4 +1,5 @@
 package com.breader.hexagonal.domain
 
-class TransferId {
-}
+import java.util.*
+
+data class TransferId(val id: UUID)
