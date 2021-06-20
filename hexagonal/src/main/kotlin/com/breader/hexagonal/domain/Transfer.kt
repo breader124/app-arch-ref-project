@@ -12,8 +12,16 @@ class Transfer(val from: String, val to: String, val amount: MonetaryAmount, val
     val id: TransferId = TransferId()
 
     init {
-        if (!date.isBankingDay() || !doesAmountExceedBankLimit()) {
-            throw TransferCreationException("Not a banking date or bank limit exceeded")
+        if (date.isBefore(LocalDate.now())) {
+            throw TransferCreationException("Date can't be in the past")
+        }
+
+        if (!date.isBankingDay()) {
+            throw TransferCreationException("Not a banking day")
+        }
+
+        if (doesAmountExceedBankLimit()) {
+            throw TransferCreationException("Amount exceeds bank limit, please contact your bank")
         }
     }
 
