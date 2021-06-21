@@ -6,6 +6,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/hexagonal/hexagonal/pom.xml" />
         <option value="$PROJECT_DIR$/microkernel/pom.xml" />
+        <option value="$PROJECT_DIR$/microkernel/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/microkernel/microkernel-app/pom.xml" />
       </list>
     </option>
   </component>
