@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @SpringBootApplication
 class MicrokernelApp : CommandLineRunner {
 
-    @Value("\${cofnig.server.test}")
+    @Value("\${config.server.test}")
     private lateinit var configServerTest: String
 
     override fun run(vararg args: String?) {
