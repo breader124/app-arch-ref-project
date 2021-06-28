@@ -10,9 +10,4 @@ class TestOutput : Output {
         println("Sending out")
     }
 
-    @PostConstruct
-    private fun postConstruct() {
-        println("${this.javaClass.name} bean has been registered")
-    }
-
 }

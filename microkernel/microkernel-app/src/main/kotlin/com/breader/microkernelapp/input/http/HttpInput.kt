@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
-import javax.annotation.PostConstruct
 
 @RestController
 @RequestMapping("input")
@@ -24,11 +23,6 @@ class HttpInput(val eventPublisher: ApplicationEventPublisher) {
             employmentContractTermination = LocalDate.now().plusYears(2)
         )
         eventPublisher.publishEvent(info)
-    }
-
-    @PostConstruct
-    private fun postConstruct() {
-        println("${this.javaClass.name} bean has been registered")
     }
 
 }
