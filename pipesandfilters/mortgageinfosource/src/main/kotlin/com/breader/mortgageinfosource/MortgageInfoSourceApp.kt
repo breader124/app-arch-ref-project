@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class MortgageinfosourceApplication
+class MortgageInfoSourceApplication
 
 fun main(args: Array<String>) {
-    runApplication<MortgageinfosourceApplication>(*args)
+    runApplication<MortgageInfoSourceApplication>(*args)
 }
