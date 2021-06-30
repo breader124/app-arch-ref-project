@@ -1,5 +1,6 @@
 package com.breader.mortgage.sink
 
+import com.breader.mortgage.sink.notifier.UserNotifier
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.support.KafkaHeaders
 import org.springframework.messaging.handler.annotation.Header

@@ -1,4 +1,4 @@
-package com.breader.mortgage.sink
+package com.breader.mortgage.sink.notifier
 
 import org.springframework.stereotype.Component
 import java.io.File
