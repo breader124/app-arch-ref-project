@@ -9,21 +9,19 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class MortgageController(
     private val template: KafkaTemplate<String, Any>,
-    @Value("\${topic.income.input}") private val inputTopic: String,
-    @Value("\${topic.rating.input}") private val ratingInput: String,
+    @Value("\${topic.income}") private val incomeInput: String
 ) {
 
     @PostMapping("income")
     fun fetchIncomeData(@RequestBody req: IncomeDataReq) {
-        template.send(inputTopic, req)
-        template.send(ratingInput, req)
+        template.send(incomeInput, req)
     }
 
 }
 
 data class IncomeDataReq(
     val name: String,
-    val salary: String,
+    val salary: Long,
     val constantCharges: Long,
-    val childrenNum: String
+    val phoneNumber: String
 )

@@ -17,7 +17,7 @@ class ConsumerConfig(
 ) {
 
     @Bean
-    fun incomeInputConsumerFactory(): ConsumerFactory<String, IncomeDataReq> = DefaultKafkaConsumerFactory(
+    fun consumerFactory(): ConsumerFactory<String, IncomeDataReq> = DefaultKafkaConsumerFactory(
         mapOf(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServerAddress,
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
@@ -27,9 +27,9 @@ class ConsumerConfig(
     )
 
     @Bean
-    fun incomeInputContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, IncomeDataReq> {
+    fun containerFactory(): ConcurrentKafkaListenerContainerFactory<String, IncomeDataReq> {
         val factory = ConcurrentKafkaListenerContainerFactory<String, IncomeDataReq>()
-        factory.consumerFactory = incomeInputConsumerFactory()
+        factory.consumerFactory = consumerFactory()
         return factory
     }
 
