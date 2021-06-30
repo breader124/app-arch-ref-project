@@ -1,4 +1,4 @@
-package com.breader.mortgage.source
+package com.breader.mortgage.tester
 
 import com.breader.mortgage.config.CommunicationConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Import
 
 @SpringBootApplication
 @Import(CommunicationConfig::class)
-class MortgageInfoSourceApplication
+class RatingTesterApplication
 
 fun main(args: Array<String>) {
-    runApplication<MortgageInfoSourceApplication>(*args)
+    runApplication<RatingTesterApplication>(*args)
 }
