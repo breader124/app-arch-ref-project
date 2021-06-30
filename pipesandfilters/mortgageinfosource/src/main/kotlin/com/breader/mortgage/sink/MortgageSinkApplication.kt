@@ -1,4 +1,4 @@
-package com.breader.mortgage.tester
+package com.breader.mortgage.sink
 
 import com.breader.mortgage.config.CommunicationConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
